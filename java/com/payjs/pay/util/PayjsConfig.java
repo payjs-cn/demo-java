@@ -12,8 +12,7 @@ public class PayjsConfig {
     // 密钥
     public final static String key = "123";
 
-
-    // 扫码支付
+    // API 地址
     public final static String nativeUrl = "https://payjs.cn/api/native";
     public final static String jsapiUrl = "https://payjs.cn/api/jsapi";
     public final static String micropayUrl = "https://payjs.cn/api/micropay";
@@ -25,5 +24,6 @@ public class PayjsConfig {
     public final static String infoUrl = "https://payjs.cn/api/info";
     public final static String complaintUrl = "https://payjs.cn/api/complaint";
     public final static String bankUrl = "https://payjs.cn/api/bank";
+    public final static String mwebUrl = "https://payjs.cn/api/mweb";
 
 }

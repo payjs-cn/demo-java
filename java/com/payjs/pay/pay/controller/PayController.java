@@ -73,6 +73,31 @@ public class PayController {
     }
 
     /**
+     * mweb
+     */
+    @RequestMapping("/mweb")
+    @ResponseBody
+    public Object Jsapi() throws NoSuchAlgorithmException, KeyManagementException, IOException {
+
+        Map<String,String> payData = new HashMap<>();
+        payData.put("mchid", PayjsConfig.mchid);
+        payData.put("total_fee", "100");
+        payData.put("out_trade_no", "83432749"); // 订单号 随便输的，自己生成一下就好了
+        payData.put("body","订单标题");
+        payData.put("attach","自定义数据");
+        payData.put("notify_url", "https://你的域名/api/pay/notify");
+
+        // 进行sign签名
+        payData.put("sign", sign(payData, PayjsConfig.key));
+
+        // 请求payjs
+        String result = HttpsUtils.sendPost(PayjsConfig.mwebUrl, JSON.toJSONString(payData),null);
+
+        // 接口返回数据
+        return JSON.parseObject(result);
+    }
+
+    /**
      * check
      */
     @RequestMapping("/check")
