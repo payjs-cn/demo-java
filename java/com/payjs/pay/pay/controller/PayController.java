@@ -259,8 +259,16 @@ public class PayController {
         notifyData.put("transaction_id",notifyDTO.getTransaction_id());
         notifyData.put("time_end",notifyDTO.getTime_end());
         notifyData.put("openid",notifyDTO.getOpenid());
-        notifyData.put("attach",notifyDTO.getAttach());
         notifyData.put("mchid",notifyDTO.getMchid());
+        
+        // options
+        if (notifyDTO.getAttach() != null) {
+            notifyData.put("attach",notifyDTO.getAttach());
+        }
+        if (notifyDTO.getType() != null) {
+            notifyData.put("type", notifyDTO.getType());
+        }
+
 
         String sign = sign(notifyData, PayjsConfig.key);
         if(sign.equals(notifyDTO.getSign())){
